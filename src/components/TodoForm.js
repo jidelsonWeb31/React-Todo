@@ -21,8 +21,25 @@ handleSubmit = e => {
         this.setState({
             todo:""
         });
+        
     };
 
+clearCompleted = newToDoName => {
+    const newState = {
+        ...this.state, 
+        todo: [...this.state.todo, 
+        {
+            task: newToDoName,
+            id: Date.now(),
+            completed: false
+        }
+        ]
+    }
+    this.setState(newState)
+    
+}
+
+    
     render(){
         return(
                 <form onSubmit={this.handleSubmit}>
@@ -33,7 +50,7 @@ handleSubmit = e => {
                         onChange={this.handleChanges}
                     />
                         <button>Add</button>
-                        <button>
+                        <button onClick={this.props.clearCompleted}>
                 Clear
             </button>
                     
