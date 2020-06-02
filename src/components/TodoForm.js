@@ -24,19 +24,12 @@ handleSubmit = e => {
         
     };
 
-clearCompleted = newToDoName => {
-    const newState = {
-        ...this.state, 
-        todo: [...this.state.todo, 
-        {
-            task: newToDoName,
-            id: Date.now(),
-            completed: false
-        }
-        ]
-    }
-    this.setState(newState)
-    
+clearCompleted = () => {
+    this.setState({
+        myToDoList: this.state.myToDoList.filter(todo =>
+            !todo.completed
+            )
+    })
 }
 
     

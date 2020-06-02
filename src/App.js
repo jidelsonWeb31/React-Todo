@@ -70,17 +70,29 @@ class App extends React.Component {
     });
   };
 
+  clearCompleted = () => {
+    this.setState({
+        myToDoList: this.state.myToDoList.filter(todo =>
+            !todo.completed
+            )
+    })
+}
+
   render() {
     return (
       <div className="App">
         <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addTodo={this.addTodo} />
+        <TodoForm addTodo={this.addTodo} 
+        //this line below makes the button on the right function only
+        myToDoList={this.state.myToDoList}
+        />
         </div>
         <div>
           <TodoList
             toggleTodo={this.toggleTodo}
             myToDoList={this.state.myToDoList}
+            clearCompleted={this.clearCompleted}
           />
         </div>
       </div>
